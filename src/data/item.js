@@ -1,0 +1,2 @@
+const itemList = [{ id: 1, name: "apple", price: 10, description: "delicious fruit" }, { id: 2, name: "banana", price: 5, description: "delicious fruit" }, { id: 3, name: "peach", price: 8, description: "delicious fruit" }]
+export default itemList
