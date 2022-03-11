@@ -9,7 +9,7 @@ function updateLocalStorage(cart) {
 const localStoragePlugin = store => {
     store.subscribe((mutation, { user }) => {
         // 當執行 setUserData 時才執行以下程式碼
-        if (mutation.type === "setUserData") {
+        if (mutation.type === "setUserData" || mutation.type === "removeUserData") {
             window.localStorage.setItem("user", JSON.stringify(user));
         }
     });
@@ -43,6 +43,11 @@ export default new Vuex.Store({
             state.user.account = userData.account;
             state.user.password = userData.password;
             state.user.isLogin = true;
+        },
+        removeUserData(state, { userData }) {
+            state.user.account = userData.account;
+            state.user.password = userData.password;
+            state.user.isLogin = false;
         },
         addToCart(state, product) {
             let item = state.cart.find(i => i.id === product.id)

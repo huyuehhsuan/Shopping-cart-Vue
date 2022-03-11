@@ -1,10 +1,7 @@
 <template>
   <div class="wrapper home">
     <h1>Home</h1>
-<<<<<<< HEAD
-=======
-    <LoginSuccess v-if="logInSuccess" />
->>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344
+    <LoginSuccess v-if="logInSuccess" /><button @click="logout">Log out</button>
     <div class="products">
       <ProductCard
         v-for="(item, index) in itemList"
@@ -27,19 +24,12 @@
 <script>
 import ProductCard from "@/components/product/ProductCard.vue";
 import ProductDetial from "@/components/product/ProductDetial.vue";
-<<<<<<< HEAD
-import itemList from "@/data/item.js";
-export default {
-  name: "Home",
-  components: { ProductCard, ProductDetial },
-=======
 import LoginSuccess from "@/components/login/LoginSuccess.vue";
 
 import itemList from "@/data/item.js";
 export default {
   name: "Home",
   components: { ProductCard, ProductDetial, LoginSuccess },
->>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344
   data() {
     return {
       itemList: itemList,
@@ -47,15 +37,15 @@ export default {
       active: false,
     };
   },
-<<<<<<< HEAD
-
-=======
+  // mounted() {
+  //   this.logInSuccess = this.$store.state.user.isLogin;
+  //   console.log(this.$store.state.user.isLogin);
+  // },
   computed: {
     logInSuccess() {
       return this.$store.state.user.isLogin;
     },
   },
->>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344
   methods: {
     getItemData(data) {
       this.itemData = data.item;
@@ -63,6 +53,17 @@ export default {
     },
     closeView() {
       this.active = false;
+    },
+    logout() {
+      this.$store.commit({
+        type: "removeUserData",
+        userData: {
+          account: "",
+          password: "",
+        },
+      });
+      this.$router.push("/");
+      this.$store.commit("removeAll");
     },
   },
 };

@@ -1,23 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
-      <LoginInput/>
-  </div>
-</template>
-
-<script>
-//import LoginSuccess from '@/components/LoginSuccess.vue'
-import LoginInput from '@/components/login/LoinInput.vue'
-export default {
-name:"LogIn",
-components:[LoginInput]
-}
-</script>
-
-<style>
-
-</style>
-=======
     <LoginInput />
   </div>
 </template>
@@ -31,4 +13,3 @@ export default {
 </script>
 <style lang="scss" >
 </style>
->>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344

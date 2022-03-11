@@ -14,33 +14,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  export default {
-    name: "ProductDetial",
-    props: ["itemData"],
-    data() {
-      return {
-        close: true,
-      };
-    },
-    computed: {
-      product_total() {
-        return this.$store.getters.productQuantity(this.itemData);
-      },
-    },
-    methods: {
-      closeBtn() {
-        this.$emit("close", this.close);
-      },
-      addToCart() {
-              this.$store.commit("addToCart", this.itemData);
-      },
-      removeFromCart() {
-        this.$store.commit("removeFromCart", this.itemData);
-      },
-    },
-  };
-=======
 export default {
   name: "ProductDetial",
   props: ["itemData"],
@@ -81,7 +54,6 @@ export default {
     },
   },
 };
->>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344
 </script>
 
 <style lang="scss" scoped>

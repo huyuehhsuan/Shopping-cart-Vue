@@ -29,8 +29,4 @@ export default {
   background-color: #fff;
   padding: 0.5rem;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344
