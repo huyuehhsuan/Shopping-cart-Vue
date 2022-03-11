@@ -14,6 +14,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
   export default {
     name: "ProductDetial",
     props: ["itemData"],
@@ -39,6 +40,48 @@
       },
     },
   };
+=======
+export default {
+  name: "ProductDetial",
+  props: ["itemData"],
+  data() {
+    return {
+      close: true,
+    };
+  },
+  computed: {
+    product_total() {
+      return this.$store.getters.productQuantity(this.itemData);
+    },
+  },
+  methods: {
+    closeBtn() {
+      this.$emit("close", this.close);
+    },
+    addToCart() {
+      if (this.$store.state.user.isLogin) {
+        console.log(this.$store.state.user.isLogin);
+        this.$store.commit("addToCart", this.itemData);
+      } else {
+        alert("please login");
+        setTimeout(() => {
+          this.$router.push({ path: "/LogIn" });
+        }, 1000);
+      }
+    },
+    removeFromCart() {
+      if (this.$store.state.user.isLogin) {
+        this.$store.commit("removeFromCart", this.itemData);
+      } else {
+        alert("please login");
+        setTimeout(() => {
+          this.$router.push({ path: "/LogIn" });
+        }, 1000);
+      }
+    },
+  },
+};
+>>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344
 </script>
 
 <style lang="scss" scoped>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # shopping-cart
+=======
+# demoapp
+>>>>>>> 584988bc31ad041eb022b4cf7bc2409b27e42344
 
 ## Project setup
 ```
