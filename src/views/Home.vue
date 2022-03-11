@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper home">
     <h1>Home</h1>
+    <LoginSuccess v-if="logInSuccess" />
     <div class="products">
       <ProductCard
         v-for="(item, index) in itemList"
@@ -23,11 +24,12 @@
 <script>
 import ProductCard from "@/components/product/ProductCard.vue";
 import ProductDetial from "@/components/product/ProductDetial.vue";
+import LoginSuccess from "@/components/login/LoginSuccess.vue";
 
 import itemList from "@/data/item.js";
 export default {
   name: "Home",
-  components: { ProductCard, ProductDetial },
+  components: { ProductCard, ProductDetial, LoginSuccess },
   data() {
     return {
       itemList: itemList,
@@ -35,7 +37,11 @@ export default {
       active: false,
     };
   },
-
+  computed: {
+    logInSuccess() {
+      return this.$store.state.user.isLogin;
+    },
+  },
   methods: {
     getItemData(data) {
       this.itemData = data.item;
