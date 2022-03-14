@@ -33,7 +33,6 @@ export default {
     },
     addToCart() {
       if (this.$store.state.user.isLogin) {
-        console.log(this.$store.state.user.isLogin);
         this.$store.commit("addToCart", this.itemData);
       } else {
         alert("please login");

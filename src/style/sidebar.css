@@ -1,0 +1,54 @@
+.siderbar {
+    width: 200px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 552px;
+    background-color: var(--scroll-bar-color);
+}
+
+.menus li span {
+    position: absolute;
+    right: 20px;
+    transform: rotate(0);
+    transition: .3s;
+}
+
+.menus li:hover {
+    cursor: pointer;
+}
+
+.menus li a:hover span {
+    transform: rotate(-180deg);
+}
+
+.menus li a {
+    font-size: var(--h3-font-size);
+    color: var(--title-color);
+    line-height: var(--big-font-size);
+    display: block;
+    width: 100%;
+    padding-left: 20px;
+    border-bottom: 1px solid var(--first-color-alt);
+}
+
+.menu-list {
+    transition: .3s;
+}
+
+.menu-list li {
+    font-size: var(--normal-font-size);
+    color: var(--text-color-light);
+    line-height: 2;
+}
+
+.menu-list li a {
+    transition: .3s;
+    padding-left: 30px;
+}
+
+.menu-list li a:hover {
+    border-left: 5px solid var(--first-color);
+    padding-left: 40px;
+    color: var(--first-color);
+}

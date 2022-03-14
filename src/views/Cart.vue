@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper recipe">
+  <div class="container recipe">
     <router-link to="/" class="back">&lt; Back</router-link>
     <h1>Cart</h1>
     <CartItemCard v-for="item in items" :key="item.id" :item="item" />

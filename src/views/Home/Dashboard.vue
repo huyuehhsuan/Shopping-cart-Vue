@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper home">
+  <div class="container">
     <h1>Home</h1>
-    <LoginSuccess v-if="logInSuccess" /><button @click="logout">Log out</button>
+
     <div class="products">
       <ProductCard
         v-for="(item, index) in itemList"
@@ -24,12 +24,11 @@
 <script>
 import ProductCard from "@/components/product/ProductCard.vue";
 import ProductDetial from "@/components/product/ProductDetial.vue";
-import LoginSuccess from "@/components/login/LoginSuccess.vue";
 
 import itemList from "@/data/item.js";
 export default {
-  name: "Home",
-  components: { ProductCard, ProductDetial, LoginSuccess },
+  name: "Dashboard",
+  components: { ProductCard, ProductDetial },
   data() {
     return {
       itemList: itemList,
@@ -53,17 +52,6 @@ export default {
     },
     closeView() {
       this.active = false;
-    },
-    logout() {
-      this.$store.commit({
-        type: "removeUserData",
-        userData: {
-          account: "",
-          password: "",
-        },
-      });
-      this.$router.push("/");
-      this.$store.commit("removeAll");
     },
   },
 };
