@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <h2>Login Success</h2>
-    <p>
-      Hi, <strong>{{ user.account }}</strong> !
-    </p>
-  </div>
+  <p>
+    Hi, <strong>{{ user.account }}</strong> !
+  </p>
 </template>
 
 <script>

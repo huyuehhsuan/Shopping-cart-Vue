@@ -101,6 +101,7 @@ h4 {
     color: var(--title-color);
     font-weight: var(--font-semi-bold);
     text-align: center;
+    margin-bottom: var(--mb-1);
 }
 
 ul {
@@ -145,6 +146,7 @@ img {
 .container {
     max-width: 768px;
     margin: auto;
+    padding: 2rem 0;
 }
 
 .grid {
@@ -179,6 +181,11 @@ button {
     border: 1px solid #999;
     text-align: center;
     margin: 0.5rem 0;
+}
+
+.back {
+    text-align: start;
+    display: inherit;
 }
 
 

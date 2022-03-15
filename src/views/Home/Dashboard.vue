@@ -36,15 +36,7 @@ export default {
       active: false,
     };
   },
-  // mounted() {
-  //   this.logInSuccess = this.$store.state.user.isLogin;
-  //   console.log(this.$store.state.user.isLogin);
-  // },
-  computed: {
-    logInSuccess() {
-      return this.$store.state.user.isLogin;
-    },
-  },
+
   methods: {
     getItemData(data) {
       this.itemData = data.item;

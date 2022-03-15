@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <router-link to="/" class="back">&lt; Back</router-link>
     <LoginInput />
   </div>
 </template>

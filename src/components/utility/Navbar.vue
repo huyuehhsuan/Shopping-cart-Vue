@@ -1,5 +1,6 @@
 <template>
   <div class="nav">
+    <LoginSuccess v-if="this.$store.state.user.isLogin" />
     <router-link to="/" class="nav-item">Home</router-link>
     <router-link to="/LogIn" class="nav-item">LogIn</router-link>
     <router-link to="/" class="nav-item" @click.native="logout">
@@ -11,8 +12,10 @@
 </template>
 
 <script>
+import LoginSuccess from "@/components/login/LoginSuccess.vue";
 export default {
   name: "Navbar",
+  components: { LoginSuccess },
   data() {
     return {
       scrollNum: 0,

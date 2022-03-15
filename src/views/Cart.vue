@@ -1,5 +1,5 @@
 <template>
-  <div class="container recipe">
+  <div class="container">
     <router-link to="/" class="back">&lt; Back</router-link>
     <h1>Cart</h1>
     <CartItemCard v-for="item in items" :key="item.id" :item="item" />
@@ -20,8 +20,4 @@ export default {
 };
 </script>
 <style lang="scss" >
-.back {
-  text-align: start;
-  display: inherit;
-}
 </style>
