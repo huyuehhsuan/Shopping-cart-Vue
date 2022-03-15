@@ -29,7 +29,7 @@ export default new Vuex.Store({
         productQuantity: state => product => {
             const item = state.cart.find(i => i.id === product.id)
             if (item) return item.quantity
-            else return null
+            else return 0
         },
         cartItems: state => {
             return state.cart
@@ -49,6 +49,16 @@ export default new Vuex.Store({
             state.user.password = userData.password;
             state.user.isLogin = false;
         },
+        // addAll(state, product) {
+        //     let item = state.cart.find(i => i.id === product.id)
+        //     console.log(item);
+        //     if (item) {
+        //         item.quantity++
+        //     } else {
+        //         state.cart.push({...product, quantity: 1 })
+        //     }
+        //     updateLocalStorage(state.cart)
+        // },
         addToCart(state, product) {
             let item = state.cart.find(i => i.id === product.id)
             if (item) {

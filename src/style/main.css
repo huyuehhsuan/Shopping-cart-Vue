@@ -98,7 +98,7 @@ h1,
 h2,
 h3,
 h4 {
-    color: var(--title-color);
+    color: var( --text-color);
     font-weight: var(--font-semi-bold);
     text-align: center;
     margin-bottom: var(--mb-1);
@@ -118,33 +118,10 @@ img {
 }
 
 
-/*==================== REUSABLE CSS CLASSES ====================*/
-
-.section {
-    padding: 2rem 0 4rem;
-}
-
-.section__title {
-    font-size: var(--h1-font-size);
-    color: var(--title-color);
-}
-
-.section__subtitle {
-    display: block;
-    font-size: var(--small-font-size);
-    margin-bottom: var(--mb-3);
-}
-
-.section__title,
-.section__subtitle {
-    text-align: center;
-}
-
-
 /*==================== LAYOUT ====================*/
 
 .container {
-    max-width: 768px;
+    max-width: 900px;
     margin: auto;
     padding: 2rem 0;
 }
@@ -152,6 +129,13 @@ img {
 .grid {
     display: grid;
     gap: 1.5rem;
+}
+
+.box-border {
+    border: 1px solid var(--first-color-lighter);
+    box-shadow: 2px 2px 10px 0 rgba(#333, 0.2);
+    padding: 2rem;
+    margin: auto;
 }
 
 
@@ -167,9 +151,6 @@ img {
 /* Change background header */
 
 
-/*==================== HOME ====================*/
-
-
 /*==================== BUTTONS ====================*/
 
 button {
@@ -180,7 +161,7 @@ button {
     display: inline-block;
     border: 1px solid #999;
     text-align: center;
-    margin: 0.5rem 0;
+    margin-top: 0.5rem;
 }
 
 .back {
@@ -188,53 +169,18 @@ button {
     display: inherit;
 }
 
+.color-button {
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    color: white;
+    font-size: var(--normal-font-size);
+    letter-spacing: 2px;
+    background: linear-gradient( 45deg, var(--first-color), var(--first-color-lighter));
+    cursor: pointer;
+    line-height: 1rem;
+}
 
-/*==================== ABOUT ====================*/
-
-
-/*==================== SKILLS ====================*/
-
-
-/*==================== QUALIFICATION ====================*/
-
-
-/*==================== SERVICES ====================*/
-
-
-/* Active Modal */
-
-
-/*==================== PORTFOLIO ====================*/
-
-
-/*==================== PROJECT IN MIND ====================*/
-
-
-/*==================== TESTIMONIAL ====================*/
-
-
-/*==================== CONTACT ME ====================*/
-
-
-/*==================== FOOTER ====================*/
-
-
-/*========== SCROLL UP ==========*/
-
-
-/* Show scroll */
-
-
-/*========== SCROLL BAR ==========*/
-
-
-/*==================== MEDIA QUERIES ====================*/
-
-
-/* For small devices */
-
-
-/* For medium devices */
-
-
-/* For large devices */
+.color-button:hover {
+    background: linear-gradient( 225deg, var(--first-color), var(--first-color-lighter));
+}

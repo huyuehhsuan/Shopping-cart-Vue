@@ -1,8 +1,13 @@
 <template>
-  <div class="card">
+  <div class="card box-border">
+    <div class="img"><img src="https://picsum.photos/200/200" alt="" /></div>
     <h2>{{ item.name }}</h2>
-    <p>{{ item.price }}</p>
-    <button @click="itemData">view more</button>
+    <div class="flex">
+      <p>price:{{ item.price }}</p>
+      <router-link :to="{ name: 'ProductDetial', query: { Id: itemdata.id } }">
+        <button class="color-button">view more</button></router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -12,25 +17,30 @@ export default {
   props: ["item"],
   data() {
     return {
-      itemObj: {
-        item: this.item,
-        active: true,
-      },
+      itemdata: this.item,
     };
-  },
-  methods: {
-    itemData() {
-      this.$emit("product-item", this.itemObj);
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+h2 {
+  margin-bottom: 0;
+}
 .card {
-  border: 1px solid #999;
   border-radius: 0.5rem;
-  background-color: #fff;
-  padding: 0.5rem;
+  padding: 1rem;
+}
+.img {
+  width: 200px;
+  margin: auto;
+}
+.color-button {
+  border-radius: 0.5rem;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 </style>
