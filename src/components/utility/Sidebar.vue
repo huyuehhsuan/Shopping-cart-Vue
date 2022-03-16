@@ -1,24 +1,29 @@
 <template>
   <nav class="siderbar">
     <ul class="menus">
-      <li>
-        <router-link to="/" @click.native="click(1)"
-          >水果<span v-if="!show1">▼</span
-          ><span v-if="show1">▲</span></router-link
+      <li class="menu-list menu-open">
+        <router-link to="/" class="menu-header"
+          >水果<span class="arrow">▼</span></router-link
         >
-        <ul class="menu-list" v-if="show1">
+        <ul>
           <li v-for="item in fruitList" :key="item.id">
-            <router-link to="/ProductDetial?Id=1">{{ item.name }}</router-link>
+            <router-link
+              :to="{ name: 'ProductDetial', query: { Id: item.id } }"
+              >{{ item.name }}</router-link
+            >
           </li>
         </ul>
       </li>
-      <li>
-        <a @click="click(2)"
-          >動物<span v-if="!show2">▼</span><span v-if="show2">▲</span></a
+      <li class="menu-list menu-open">
+        <router-link to="/" class="menu-header"
+          >動物<span class="arrow">▼</span></router-link
         >
-        <ul class="menu-list" v-if="show2">
+        <ul>
           <li v-for="item in animalList" :key="item.id">
-            <router-link to="/ProductDetial?Id=1">{{ item.name }}</router-link>
+            <router-link
+              :to="{ name: 'ProductDetial', query: { Id: item.id } }"
+              >{{ item.name }}</router-link
+            >
           </li>
         </ul>
       </li>
@@ -33,9 +38,13 @@ export default {
   data() {
     return {
       itemList: itemList,
-      show1: false,
-      show2: false,
     };
+  },
+  mounted() {
+    const menuHeader = document.querySelectorAll(".menu-header");
+    menuHeader.forEach((item) => {
+      item.addEventListener("click", this.toggleSkills);
+    });
   },
   computed: {
     fruitList() {
@@ -46,12 +55,13 @@ export default {
     },
   },
   methods: {
-    click(num) {
-      if (num === 1) {
-        this.show1 = !this.show1;
+    toggleSkills(e) {
+      let itemClass = e.target.parentNode.className;
+      if (itemClass === "menu-list menu-open") {
+        e.target.parentNode.className = "menu-list menu-close";
       }
-      if (num === 2) {
-        this.show2 = !this.show2;
+      if (itemClass === "menu-list menu-close") {
+        e.target.parentNode.className = "menu-list menu-open";
       }
     },
   },

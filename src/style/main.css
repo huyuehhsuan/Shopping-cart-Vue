@@ -164,6 +164,10 @@ button {
     margin-top: 0.5rem;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .back {
     text-align: start;
     display: inherit;

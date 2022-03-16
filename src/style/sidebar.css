@@ -28,6 +28,18 @@
     border-bottom: 1px solid var(--first-color-alt);
 }
 
+.menu-open ul {
+    display: block;
+}
+
+.menu-close ul {
+    display: none;
+}
+
+.menu-close .arrow {
+    transform: rotate(180deg);
+}
+
 .menu-list li {
     font-size: var(--normal-font-size);
     color: var(--text-color-light);

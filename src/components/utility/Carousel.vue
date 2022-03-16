@@ -3,6 +3,7 @@
     <ul class="carousel">
       <li v-for="n in list" :key="n.id" :style="img(n)"></li>
     </ul>
+    <h1 class="type-text">textcodeadd...</h1>
   </div>
 </template>
 
@@ -25,11 +26,14 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", function () {
+      let typeText = document.querySelector(".type-text");
       let scroll = document.querySelector(".carousel");
       if (window.scrollY > 0) {
         scroll.classList.add("scroll");
+        typeText.classList.add("typing");
       } else {
         scroll.classList.remove("scroll");
+        typeText.classList.remove("typing");
       }
     });
   },
@@ -37,7 +41,7 @@ export default {
     img(n) {
       return {
         backgroundImage: `url(${n.url})`,
-        animationDelay: `${(n - 1) * 5}s`,
+        animationDelay: `${(n.id - 1) * 5}s`,
         animationDuration: "10s",
       };
     },
@@ -61,6 +65,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: 0.5s;
+  z-index: 2;
 }
 
 .scroll {
@@ -81,7 +86,19 @@ export default {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-
+.type-text {
+  position: absolute;
+  left: 40%;
+  bottom: 0;
+  font-family: monospace;
+  color: #fff;
+  font-size: 60px;
+  width: 0ch;
+  overflow: hidden;
+}
+.typing {
+  animation: 6s typing steps(15, jump-none) forwards infinite;
+}
 @keyframes carouselanimate {
   0% {
     opacity: 0;
@@ -99,6 +116,14 @@ export default {
   to {
     opacity: 0;
     background-size: 110% auto;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 14ch;
   }
 }
 </style>

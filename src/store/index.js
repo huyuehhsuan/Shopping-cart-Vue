@@ -49,16 +49,6 @@ export default new Vuex.Store({
             state.user.password = userData.password;
             state.user.isLogin = false;
         },
-        // addAll(state, product) {
-        //     let item = state.cart.find(i => i.id === product.id)
-        //     console.log(item);
-        //     if (item) {
-        //         item.quantity++
-        //     } else {
-        //         state.cart.push({...product, quantity: 1 })
-        //     }
-        //     updateLocalStorage(state.cart)
-        // },
         addToCart(state, product) {
             let item = state.cart.find(i => i.id === product.id)
             if (item) {
@@ -77,6 +67,14 @@ export default new Vuex.Store({
                     state.cart = state.cart.filter(i => i.id !== product.id)
                 }
             }
+            updateLocalStorage(state.cart)
+        },
+        removeOneItem(state, product) {
+            let item = state.cart.find(i => i.id === product.id)
+            if (item) {
+                state.cart = state.cart.filter(i => i.id !== product.id)
+            }
+
             updateLocalStorage(state.cart)
         },
         removeAll(state) {
