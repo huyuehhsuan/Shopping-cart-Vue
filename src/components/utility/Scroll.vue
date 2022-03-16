@@ -124,18 +124,18 @@ section {
   align-items: center;
 }
 section:nth-child(1) {
-  color: #e0ffff;
+  color: var(--first-color-second);
 }
 section:nth-child(2) {
   color: #42455a;
-  background: #e0ffff;
+  background: var(--first-color-second);
 }
 section:nth-child(3) {
-  color: #e0ffff;
+  color: var(--first-color-second);
 }
 section:nth-child(4) {
   color: #42455a;
-  background: #e0ffff;
+  background: var(--first-color-second);
 }
 section .container {
   margin: 100px;
@@ -155,7 +155,7 @@ section .text-container {
 section .text-container .text-box {
   margin: 20px;
   padding: 20px;
-  background: #00c2cb;
+  background: var(--body-color);
 }
 section .text-container .text-box h3 {
   font-size: 30px;
