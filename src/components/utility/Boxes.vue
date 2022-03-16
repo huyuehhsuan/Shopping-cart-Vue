@@ -9,10 +9,16 @@
     <div class="box box3"></div>
     <div class="box box4"></div>
     <div class="box box5">
-      <ul>
+      <ul class="change">
         <li
           style="
             background-image: url(https://images.unsplash.com/photo-1467189386127-c4e5e31ee213?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+          "
+        ></li>
+        <li
+          style="
+            animation-delay: 2.5s;
+            background-image: url(https://images.unsplash.com/photo-1571875257727-256c39da42af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80);
           "
         ></li>
       </ul>
@@ -69,7 +75,24 @@ export default {
   //animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-
+.change {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.change > li {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 150% auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-name: change;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+}
 .grid {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
@@ -164,6 +187,23 @@ export default {
       110vmax 110vmax, 70vmax 70vmax;
     background-position: -110vmax -110vmax, -70vmax -70vmax, 20vmax 20vmax,
       20vmax 20vmax, 120vmax 120vmax;
+  }
+}
+@keyframes change {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 </style>
