@@ -5,7 +5,7 @@
         <router-link to="/" class="menu-header"
           >水果<span class="arrow">▼</span></router-link
         >
-        <ul>
+        <ul class="menu-list-item">
           <li v-for="item in fruitList" :key="item.id">
             <router-link
               :to="{ name: 'ProductDetial', query: { Id: item.id } }"
@@ -18,7 +18,7 @@
         <router-link to="/" class="menu-header"
           >動物<span class="arrow">▼</span></router-link
         >
-        <ul>
+        <ul class="menu-list-item">
           <li v-for="item in animalList" :key="item.id">
             <router-link
               :to="{ name: 'ProductDetial', query: { Id: item.id } }"
@@ -28,6 +28,7 @@
         </ul>
       </li>
     </ul>
+    <div class="bar-handler">X</div>
   </nav>
 </template>
 
@@ -44,6 +45,21 @@ export default {
     const menuHeader = document.querySelectorAll(".menu-header");
     menuHeader.forEach((item) => {
       item.addEventListener("click", this.toggleSkills);
+    });
+    const barHandler = document.querySelector(".bar-handler");
+    const siderbar = document.querySelector(".siderbar");
+    barHandler.addEventListener("click", () => {
+      if (siderbar.className === "siderbar") {
+        siderbar.classList.add("siderbar-open");
+      } else {
+        siderbar.classList.remove("siderbar-open");
+      }
+    });
+    const menuListItem = document.querySelectorAll(".menu-list-item");
+    menuListItem.forEach((item) => {
+      item.addEventListener("click", () => {
+        siderbar.classList.remove("siderbar-open");
+      });
     });
   },
   computed: {

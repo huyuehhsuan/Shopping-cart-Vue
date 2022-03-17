@@ -121,14 +121,33 @@ img {
 /*==================== LAYOUT ====================*/
 
 .container {
-    max-width: 900px;
+    max-width: 1100px;
     margin: auto;
     padding: 2rem 0;
 }
 
+@media screen and (max-width: 900px) {
+    .container {
+        padding: 2rem;
+    }
+}
+
 .grid {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+}
+
+@media screen and (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .box-border {

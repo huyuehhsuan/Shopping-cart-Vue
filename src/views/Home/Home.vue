@@ -14,7 +14,7 @@ import Sidebar from "@/components/utility/Sidebar.vue";
 
 export default {
   name: "Home",
-  components: { Carousel, Navbar, Sidebar },
+  components: { Navbar, Sidebar, Carousel },
 };
 </script>
 <style >

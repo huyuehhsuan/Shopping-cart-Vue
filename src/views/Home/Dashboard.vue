@@ -1,26 +1,31 @@
 <template>
   <div>
-    <div class="container products">
-      <ProductCard
-        v-for="(item, index) in itemList"
-        :key="index"
-        :item="item"
-        @product-item="getItemData"
-      />
+    <div class="container">
+      <h1>Products</h1>
+      <div class="grid">
+        <ProductCard
+          v-for="(item, index) in itemList"
+          :key="index"
+          :item="item"
+          @product-item="getItemData"
+        />
+      </div>
     </div>
-    <Scroll />
-    <Boxes />
+    <!-- <Scroll /> -->
+    <div class="container"><Boxes /></div>
+    <div class="container"><Hoverbox /></div>
   </div>
 </template>
 
 <script>
 import ProductCard from "@/components/product/ProductCard.vue";
 import itemList from "@/data/item.js";
-import Scroll from "@/components/utility/Scroll.vue";
+//import Scroll from "@/components/utility/Scroll.vue";
 import Boxes from "@/components/utility/Boxes.vue";
+import Hoverbox from "@/components/utility/Hoverbox.vue";
 export default {
   name: "Dashboard",
-  components: { ProductCard, Scroll, Boxes },
+  components: { ProductCard, Boxes, Hoverbox },
   data() {
     return {
       itemList: itemList,
@@ -36,9 +41,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.products {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
 </style>

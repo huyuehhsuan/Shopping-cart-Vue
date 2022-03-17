@@ -1,5 +1,5 @@
 <template>
-  <div class="container grid">
+  <div class="grid">
     <div class="box box1"></div>
     <div class="box box2">
       <ul class="carousel">
@@ -93,14 +93,12 @@ export default {
   animation-iteration-count: infinite;
   animation-duration: 5s;
 }
-.grid {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
+
 .box {
   width: 300px;
   height: 300px;
   overflow: hidden;
+  margin: auto;
 }
 .box1 {
   background-color: #dab88b;
@@ -134,7 +132,10 @@ export default {
   animation: 5s movement linear infinite;
 }
 .box4 {
-  background-color: #f3e9dd;
+  background: linear-gradient(-45deg, #dab88b, #f3e9dd, #fdf6ec, #f68989);
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
+  height: 100%;
 }
 .box5 li {
   width: 300px;
@@ -204,6 +205,17 @@ export default {
   }
   to {
     opacity: 0;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 </style>
