@@ -11,7 +11,7 @@
         />
       </div>
     </div>
-    <!-- <Scroll /> -->
+    <Scroll />
     <div class="container"><Boxes /></div>
     <div class="container"><Hoverbox /></div>
   </div>
@@ -20,12 +20,12 @@
 <script>
 import ProductCard from "@/components/product/ProductCard.vue";
 import itemList from "@/data/item.js";
-//import Scroll from "@/components/utility/Scroll.vue";
+import Scroll from "@/components/utility/Scroll.vue";
 import Boxes from "@/components/utility/Boxes.vue";
 import Hoverbox from "@/components/utility/Hoverbox.vue";
 export default {
   name: "Dashboard",
-  components: { ProductCard, Boxes, Hoverbox },
+  components: { ProductCard, Boxes, Hoverbox, Scroll },
   data() {
     return {
       itemList: itemList,

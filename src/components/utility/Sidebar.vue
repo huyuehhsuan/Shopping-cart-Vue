@@ -9,6 +9,7 @@
           <li v-for="item in fruitList" :key="item.id">
             <router-link
               :to="{ name: 'ProductDetial', query: { Id: item.id } }"
+              @click.native="reload"
               >{{ item.name }}</router-link
             >
           </li>
@@ -22,6 +23,7 @@
           <li v-for="item in animalList" :key="item.id">
             <router-link
               :to="{ name: 'ProductDetial', query: { Id: item.id } }"
+              @click.native="reload"
               >{{ item.name }}</router-link
             >
           </li>
@@ -79,6 +81,9 @@ export default {
       if (itemClass === "menu-list menu-close") {
         e.target.parentNode.className = "menu-list menu-open";
       }
+    },
+    reload() {
+      this.$router.go(0);
     },
   },
 };

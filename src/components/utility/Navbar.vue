@@ -44,7 +44,6 @@ export default {
     const navLinks = document.querySelector(".nav-links");
     navButton.addEventListener("click", () => {
       let open = document.querySelector(".nav-links.open");
-      console.log(open);
       if (open) {
         open.className = "nav-links close";
       }
@@ -55,7 +54,6 @@ export default {
     const navItems = document.querySelectorAll(".nav-item");
     navItems.forEach((item) => {
       item.addEventListener("click", () => {
-        console.log(navLinks);
         navLinks.classList.remove("open");
         navLinks.classList.add("close");
       });

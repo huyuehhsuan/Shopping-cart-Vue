@@ -11,16 +11,14 @@
         <p>{{ itemData.description }}</p>
         <p>price:{{ itemData.price }}</p>
         <div>
-          <button @click="reduce">-</button>{{ num }}
+          <button @click="reduce">-</button><span class="num">{{ num }}</span>
           <button @click="add">+</button>
         </div>
-
-        <!-- <div><button @click="addAll">Add to Cart</button></div> -->
         <div>
-          <button @click="addToCart" class="color-button">Add to Cart</button>
+          <button @click="addItemsToCart" class="color-button">
+            Add to Cart
+          </button>
         </div>
-
-        <!-- <button @click="removeFromCart">Remove</button> -->
       </div>
     </div>
   </div>
@@ -39,8 +37,11 @@ export default {
     };
   },
   mounted() {
-    this.itemData = this.itemList[this.$route.query.Id - 1];
-    console.log(this.itemData);
+    if (this.$route.query.Id) {
+      this.itemData = this.itemList[this.$route.query.Id - 1];
+    } else {
+      this.itemData = this.itemList[0];
+    }
   },
   computed: {
     product_total() {
@@ -51,19 +52,19 @@ export default {
     add() {
       this.num++;
       this.itemData.quantity = this.num;
-      console.log(this.itemData);
     },
     reduce() {
       if (this.num > 0) {
         this.num--;
         this.itemData.quantity = this.num;
-        console.log(this.itemData);
       }
       return;
     },
-    addToCart() {
+    addItemsToCart() {
       if (this.$store.state.user.isLogin) {
-        this.$store.commit("addToCart", this.itemData);
+        if (this.num > 0) {
+          this.$store.commit("addItemsToCart", this.itemData);
+        }
       } else {
         alert("please login");
         setTimeout(() => {
@@ -98,5 +99,9 @@ export default {
 }
 .color-button {
   border-radius: 0.5rem;
+}
+.num {
+  display: inline-block;
+  margin: 0 0.5rem;
 }
 </style>

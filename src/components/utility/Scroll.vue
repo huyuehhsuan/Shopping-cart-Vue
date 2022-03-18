@@ -1,7 +1,10 @@
 <template>
   <div>
-    <section>
-      <h1>Scroll Down to Reveal Elements &#8595;</h1>
+    <section style="flex-direction: column">
+      <h1 class="text-jump">ScrollDown &#8595;</h1>
+      <h1 class="text-pop">ScrollDown &#8595;</h1>
+      <h1 class="text-flip">ScrollDown &#8595;</h1>
+      <h1 class="text-blink">ScrollDown &#8595;</h1>
     </section>
     <section>
       <div class="container reveal fade-bottom">
@@ -97,6 +100,29 @@ export default {
   name: "Scroll",
   mounted() {
     window.addEventListener("scroll", this.reveal);
+    const textJump = document.querySelector(".text-jump");
+    textJump.innerHTML = textJump.textContent.replace(/\S/g, "<span>$&</span>");
+    document.querySelectorAll(".text-jump span").forEach((item, index) => {
+      item.style.setProperty("--delay", `${index * 0.1}s`);
+    });
+    const textPop = document.querySelector(".text-pop");
+    textPop.innerHTML = textPop.textContent.replace(/\S/g, "<span>$&</span>");
+    document.querySelectorAll(".text-pop span").forEach((item, index) => {
+      item.style.setProperty("--delay", `${index * 0.1}s`);
+    });
+    const textFlip = document.querySelector(".text-flip");
+    textFlip.innerHTML = textFlip.textContent.replace(/\S/g, "<span>$&</span>");
+    document.querySelectorAll(".text-flip span").forEach((item, index) => {
+      item.style.setProperty("--delay", `${index * 0.1}s`);
+    });
+    const textBlink = document.querySelector(".text-blink");
+    textBlink.innerHTML = textBlink.textContent.replace(
+      /\S/g,
+      "<span>$&</span>"
+    );
+    document.querySelectorAll(".text-blink span").forEach((item, index) => {
+      item.style.setProperty("--delay", `${index * 0.1}s`);
+    });
   },
   methods: {
     reveal() {
@@ -105,6 +131,7 @@ export default {
         var windowHeight = window.innerHeight;
         var elementTop = reveals[i].getBoundingClientRect().top;
         var elementVisible = 150;
+
         if (elementTop < windowHeight - elementVisible) {
           reveals[i].classList.add("active");
         } else {
@@ -144,11 +171,31 @@ section h1 {
   font-size: 3rem;
   margin: 20px;
 }
+section span {
+  display: inline-block;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+  animation-delay: var(--delay);
+  /* animation-iteration-count: infinite; */
+}
+section .text-jump span {
+  animation-name: text-jump;
+}
+section .text-pop span {
+  animation-name: text-pop;
+}
+section .text-flip span {
+  animation-name: text-flip;
+}
+section .text-blink span {
+  animation-name: text-blink;
+}
 section h2 {
   font-size: 40px;
   text-align: center;
   text-transform: uppercase;
 }
+
 section .text-container {
   display: flex;
 }
@@ -191,6 +238,9 @@ section .text-container .text-box h3 {
 .active.fade-right {
   animation: fade-right 1s ease-in;
 }
+.active.text-jump {
+  animation: text-jump 0.4s ease-in;
+}
 @keyframes fade-bottom {
   0% {
     transform: translateY(50px);
@@ -220,6 +270,42 @@ section .text-container .text-box h3 {
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+@keyframes text-jump {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes text-pop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+@keyframes text-flip {
+  0%,
+  100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+}
+@keyframes text-blink {
+  0%,
+  100% {
+    color: inherit;
+  }
+  50% {
+    color: yellow;
   }
 }
 </style>
