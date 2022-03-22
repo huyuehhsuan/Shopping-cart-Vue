@@ -71,4 +71,22 @@ export default {
     }
   }
 }
+.box3 {
+  background-color: gray;
+  background: linear-gradient(
+      110deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 60%
+    )
+    #ffd2ff;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loading ease-in-out infinite;
+}
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
+}
 </style>
