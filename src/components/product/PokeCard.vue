@@ -1,18 +1,14 @@
 <template>
-  <div class="poke-container">
-    <div class="pokemon" :style="backgroundColor">
-      <div class="img-container">
-        <img :src="imgUrl" alt="pokeimg" />
-      </div>
-      <div class="info">
-        <span class="number">{{
-          pokeitem.id.toString().padStart(3, "0")
-        }}</span>
-        <h3 class="name">{{ pokeitem.name }}</h3>
-        <small class="type"
-          >Type: <span>{{ pokeitem.types[0].type.name }}</span></small
-        >
-      </div>
+  <div class="card box-border" :style="backgroundColor">
+    <div class="img-container">
+      <img :src="imgUrl" alt="pokeimg" class="img" />
+    </div>
+    <div class="info">
+      <span class="number">#{{ pokeitem.id.toString().padStart(3, "0") }}</span>
+      <h3 class="name">{{ pokeitem.name }}</h3>
+      <small class="type"
+        >Type: <span>{{ pokeitem.types[0].type.name }}</span></small
+      >
     </div>
   </div>
 </template>
@@ -60,34 +56,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.poke-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: space-between;
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-.pokemon {
-  background-color: #eee;
-  border-radius: 20px;
-  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
-  margin: 10px;
-  padding: 20px;
+.card {
   text-align: center;
 }
-.pokemon .info {
+.box-border {
+  border-radius: 20px;
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+}
+.info {
   margin-top: 20px;
 }
-
-.pokemon .number {
+.img {
+  width: 150px;
+  margin: auto;
+}
+.img-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+}
+.number {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   font-size: 0.8em;
   padding: 5px 10px;
 }
 
-.pokemon .name {
+.name {
   margin: 15px 0 7px;
   letter-spacing: 1px;
 }
