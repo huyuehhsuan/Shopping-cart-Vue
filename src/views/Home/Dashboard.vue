@@ -39,7 +39,7 @@ export default {
     return {
       itemList: itemList,
       itemData: {},
-      listLength: 5,
+      listLength: 30,
       pokeList: [],
     };
   },
