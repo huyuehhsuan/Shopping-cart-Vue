@@ -5,7 +5,9 @@
     </div>
     <div class="info">
       <span class="number">#{{ pokeitem.id.toString().padStart(3, "0") }}</span>
-      <h3 class="name">{{ pokeitem.name }}</h3>
+      <h3 class="name">
+        {{ pokeitem.name[0].toUpperCase() + pokeitem.name.slice(1) }}
+      </h3>
       <small class="type"
         >Type: <span>{{ pokeitem.types[0].type.name }}</span></small
       >
@@ -62,6 +64,12 @@ export default {
 .box-border {
   border-radius: 20px;
   box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  transition: 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.box-border:hover {
+  transform: scale3d(1.1, 1.1, 1);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 .info {
   margin-top: 20px;
