@@ -60,6 +60,9 @@ export default {
 <style lang="scss" scoped>
 .card {
   text-align: center;
+  @media screen and (max-width: 800px) {
+    width: 80%;
+  }
 }
 .box-border {
   border-radius: 20px;
@@ -84,6 +87,7 @@ export default {
   width: 120px;
   height: 120px;
   text-align: center;
+  margin: auto;
 }
 .number {
   background-color: rgba(0, 0, 0, 0.1);
