@@ -12,6 +12,7 @@
         >Type: <span>{{ pokeitem.types[0].type.name }}</span></small
       >
     </div>
+    <button @click="openModal()" class="view-btn">view more</button>
   </div>
 </template>
 
@@ -52,6 +53,15 @@ export default {
     },
     backgroundColor() {
       return `background-color:${this.bgcolor}`;
+    },
+  },
+  methods: {
+    openModal() {
+      if (this.pokeitem) {
+        this.$emit("modalData", this.pokeitem);
+        this.$emit("modalColor", this.bgcolor);
+        console.log(this.bgcolor);
+      }
     },
   },
 };
@@ -99,5 +109,9 @@ export default {
 .name {
   margin: 15px 0 7px;
   letter-spacing: 1px;
+}
+.view-btn {
+  display: block;
+  margin: 1rem auto 0;
 }
 </style>

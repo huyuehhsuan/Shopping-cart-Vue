@@ -130,6 +130,7 @@ img {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    justify-items: center;
 }
 
 @media screen and (max-width: 900px) {

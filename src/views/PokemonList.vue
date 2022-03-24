@@ -1,31 +1,74 @@
 <template>
-  <div class="container">
-    <div class="input">
-      <select v-model="type">
-        <option value="all">all</option>
-        <option value="fire">fire</option>
-        <option value="grass">grass</option>
-        <option value="electric">electric</option>
-        <option value="water">water</option>
-        <option value="ground">ground</option>
-        <option value="rock">rock</option>
-        <option value="fairy">fairy</option>
-        <option value="poison">poison</option>
-        <option value="bug">bug</option>
-        <option value="dragon">dragon</option>
-        <option value="psychic">psychic</option>
-        <option value="flying">flying</option>
-        <option value="fighting">fighting</option>
-        <option value="normal">normal</option>
-      </select>
-      <input type="text" v-model.trim="title" v-on:keyup.enter="inputHandle" />
+  <div>
+    <div class="container">
+      <div class="input">
+        <select v-model="type">
+          <option value="all">all</option>
+          <option value="fire">fire</option>
+          <option value="grass">grass</option>
+          <option value="electric">electric</option>
+          <option value="water">water</option>
+          <option value="ground">ground</option>
+          <option value="rock">rock</option>
+          <option value="fairy">fairy</option>
+          <option value="poison">poison</option>
+          <option value="bug">bug</option>
+          <option value="dragon">dragon</option>
+          <option value="psychic">psychic</option>
+          <option value="flying">flying</option>
+          <option value="fighting">fighting</option>
+          <option value="normal">normal</option>
+        </select>
+        <input
+          type="text"
+          v-model.trim="title"
+          v-on:keyup.enter="inputHandle"
+        />
+      </div>
+      <div class="grid">
+        <PokeCard
+          v-for="(item, index) in titleMenu"
+          :key="index"
+          :pokeitem="item"
+          @modalData="getModalData"
+          @modalColor="getModalColor"
+        />
+      </div>
     </div>
-    <div class="grid">
-      <PokeCard
-        v-for="(item, index) in titleMenu"
-        :key="index"
-        :pokeitem="item"
-      />
+    <div class="modal-bg">
+      <div class="modal card box-border">
+        <button @click="closeModal()" class="close-btn">X</button>
+        <h1>{{ modal.name }}</h1>
+        <div class="img-container">
+          <img :src="imgUrl" alt="pokeimg" class="img" />
+        </div>
+        <div class="informations">
+          <div class="information">
+            <p class="infoText">Height</p>
+            <p class="infoValue">{{ modal.height }}m</p>
+          </div>
+          <div class="information">
+            <p class="infoText">Weight</p>
+            <p class="infoValue">{{ modal.weight }}kg</p>
+          </div>
+          <div class="information">
+            <p class="infoText">Type</p>
+            <p class="infoValue">{{ modal.types[0].type.name }}</p>
+          </div>
+          <div class="information">
+            <p class="infoText">First Ability</p>
+            <p class="infoValue">{{ modal.abilities[0].ability.name }}</p>
+          </div>
+          <div class="information">
+            <p class="infoText">Hidden Ability</p>
+            <p class="infoValue">{{ modal.abilities[1].ability.name }}</p>
+          </div>
+          <div class="information">
+            <p class="infoText">Base_experience</p>
+            <p class="infoValue">{{ modal.base_experience }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -37,11 +80,20 @@ export default {
   components: { PokeCard },
   data() {
     return {
-      listLength: 50,
+      listLength: 3,
       pokeList: [],
       showList: [],
       type: "all",
       title: "",
+      modal: {
+        name: "",
+        height: null,
+        weight: null,
+        base_experience: null,
+        abilities: [{ ability: { name: "" } }, { ability: { name: "" } }],
+        types: [{ type: { name: "" } }],
+      },
+      color: "",
     };
   },
   mounted() {
@@ -58,7 +110,22 @@ export default {
       const res = await pokemon.getPokemon(id);
       this.pokeList.push(res);
     },
+    getModalData(data) {
+      this.modal = data;
+      const modal = document.querySelector(".modal-bg");
+      modal.classList.add("bg-active");
+    },
+    getModalColor(data) {
+      this.color = data;
+      const modal = document.querySelector(".modal");
+      modal.style["background-color"] = data;
+    },
+    closeModal() {
+      const modal = document.querySelector(".bg-active");
+      modal.classList.remove("bg-active");
+    },
   },
+
   computed: {
     //第一層分類檢索
     typeMenu() {
@@ -82,10 +149,16 @@ export default {
         return this.typeMenu;
       }
     },
+    imgUrl() {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.modal.id}.png`;
+    },
   },
 };
 </script>
 <style lang="scss" >
+.container {
+  position: relative;
+}
 .input {
   width: 70%;
   font-size: 1.2rem;
@@ -119,5 +192,70 @@ export default {
   @media screen and (max-width: 800px) {
     width: 60%;
   }
+}
+.modal-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  visibility: hidden;
+  opacity: 1;
+  transition: visibility 0s visibility 0.5s;
+}
+.bg-active {
+  visibility: visible;
+  visibility: 1;
+}
+.modal {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+.bg-active .modal {
+  top: 50%;
+  opacity: 1;
+}
+.img-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  margin: 1rem auto;
+}
+.img {
+  width: 150px;
+  margin: auto;
+}
+.informations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.information {
+  margin: 4px;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: #fff 1px solid;
+}
+.infoText {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.infoValue {
+  font-size: 26px;
+}
+.close-btn {
+  display: block;
+  margin-left: auto;
 }
 </style>
