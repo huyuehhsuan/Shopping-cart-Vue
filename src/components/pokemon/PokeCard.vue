@@ -1,5 +1,6 @@
 <template>
-  <div class="card box-border" :style="backgroundColor">
+  <div class="card box-border pokecard" :style="backgroundColor">
+    <audio id="hover" src="../../assets/audio/hover.mp3"></audio>
     <div class="img-container">
       <img :src="imgUrl" alt="pokeimg" class="img" />
     </div>
@@ -13,6 +14,7 @@
       >
     </div>
     <button @click="openModal()" class="view-btn">view more</button>
+    <audio id="click" src="../../assets/audio/click.mp3"></audio>
   </div>
 </template>
 
@@ -46,6 +48,13 @@ export default {
     const colorList = this.colors.map((item) => Object.values(item)[0]);
     const index = typeList.indexOf(`${this.pokeitem.types[0].type.name}`);
     this.bgcolor = colorList[index];
+    const cards = document.querySelectorAll(".pokecard");
+    cards.forEach((item) => {
+      item.addEventListener("mouseenter", function () {
+        var audio = document.getElementById("hover");
+        audio.play();
+      });
+    });
   },
   computed: {
     imgUrl() {
@@ -60,7 +69,8 @@ export default {
       if (this.pokeitem) {
         this.$emit("modalData", this.pokeitem);
         this.$emit("modalColor", this.bgcolor);
-        console.log(this.bgcolor);
+        var audio = document.getElementById("click");
+        audio.play();
       }
     },
   },
@@ -69,6 +79,9 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  width: 80%;
+  font-family: "AtariClassicChunky";
+  line-height: 2;
   text-align: center;
   @media screen and (max-width: 800px) {
     width: 80%;
@@ -82,7 +95,6 @@ export default {
 .box-border:hover {
   transform: scale3d(1.1, 1.1, 1);
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
-  cursor: pointer;
 }
 .info {
   margin-top: 20px;
@@ -113,5 +125,6 @@ export default {
 .view-btn {
   display: block;
   margin: 1rem auto 0;
+  cursor: url("../../assets/pokemon-ball.svg"), auto;
 }
 </style>

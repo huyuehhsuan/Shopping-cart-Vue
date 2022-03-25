@@ -2,6 +2,11 @@
   <div>
     <div class="container">
       <div class="input">
+        <img
+          src="../assets/pokemon-logo.png"
+          alt="pokemon-logo"
+          style="width: 100px; margin-right: 20px"
+        />
         <select v-model="type">
           <option value="all">all</option>
           <option value="fire">fire</option>
@@ -25,6 +30,7 @@
           v-on:keyup.enter="inputHandle"
         />
       </div>
+      <button @click="closeAudio()">關閉音效</button>
       <div class="grid">
         <PokeCard
           v-for="(item, index) in titleMenu"
@@ -35,10 +41,12 @@
         />
       </div>
     </div>
+
     <div class="modal-bg">
       <div class="modal card box-border">
         <button @click="closeModal()" class="close-btn">X</button>
-        <h1>{{ modal.name }}</h1>
+        <audio id="click" src="../assets/audio/click.mp3"></audio>
+        <h1>{{ modal.name[0].toUpperCase() + modal.name.slice(1) }}</h1>
         <div class="img-container">
           <img :src="imgUrl" alt="pokeimg" class="img" />
         </div>
@@ -86,7 +94,7 @@ export default {
       type: "all",
       title: "",
       modal: {
-        name: "",
+        name: "name",
         height: null,
         weight: null,
         base_experience: null,
@@ -123,6 +131,17 @@ export default {
     closeModal() {
       const modal = document.querySelector(".bg-active");
       modal.classList.remove("bg-active");
+      var audio = document.getElementById("click");
+      audio.play();
+    },
+    closeAudio() {
+      const cards = document.querySelectorAll(".pokecard");
+      cards.forEach((item) => {
+        item.addEventListener("mouseenter", function () {
+          var hover = document.getElementById("hover");
+          hover.pause();
+        });
+      });
     },
   },
 
@@ -160,6 +179,8 @@ export default {
   position: relative;
 }
 .input {
+  display: flex;
+  align-items: center;
   width: 70%;
   font-size: 1.2rem;
   background-color: rgb(255, 172, 158);
@@ -217,6 +238,10 @@ export default {
   opacity: 0;
   transition: 0.5s;
   border-radius: 10px;
+  h1 {
+    font-family: "AtariClassicChunky";
+    line-height: 2;
+  }
 }
 .bg-active .modal {
   top: 50%;
@@ -257,5 +282,6 @@ export default {
 .close-btn {
   display: block;
   margin-left: auto;
+  cursor: url("../assets/pokemon-ball.svg"), auto !important;
 }
 </style>
