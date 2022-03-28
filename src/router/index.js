@@ -33,12 +33,7 @@ const routes = [{
                 component: () =>
                     import ( /* webpackChunkName: "log_in" */ '../views/Product/ProductDetial.vue')
             },
-            {
-                path: '/PokemonList',
-                name: 'PokemonList',
-                component: () =>
-                    import ( /* webpackChunkName: "log_in" */ '../views/PokemonList.vue')
-            },
+
         ]
     },
 

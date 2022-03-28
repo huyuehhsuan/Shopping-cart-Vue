@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <h1>2022328Products</h1>
+      <h1>my products</h1>
       <div class="grid">
         <ProductCard
           v-for="(item, index) in itemList"
