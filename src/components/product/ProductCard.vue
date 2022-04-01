@@ -1,6 +1,6 @@
 <template>
   <div class="card box-border">
-    <div class="img"><img src="https://picsum.photos/200/200" alt="" /></div>
+    <div class="img"><img :src="item.src" alt="" /></div>
     <h2>{{ item.name }}</h2>
     <div class="flex">
       <p>price:{{ item.price }}</p>
@@ -19,6 +19,9 @@ export default {
     return {
       itemdata: this.item,
     };
+  },
+  mounted() {
+    console.log(this.item);
   },
 };
 </script>

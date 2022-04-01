@@ -3,7 +3,7 @@
     <div class="card" v-show="cart_total">
       <h1>TOLAL:{{ cart_total }}</h1>
       <button @click="removeAll">Remove All</button>
-      <button>pay</button>
+      <button>Checkout</button>
     </div>
     <div v-show="!cart_total">no product</div>
   </div>
@@ -30,7 +30,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid #999;
+  border: 1px solid rgb(226, 226, 226);
   background-color: #fff;
   padding: 0.5rem;
 }

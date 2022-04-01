@@ -6,10 +6,11 @@
         <div>price</div>
         <div>quantity</div>
         <div>total</div>
+        <div></div>
       </div>
       <div class="card-body">
-        <div>
-          <img src="https://picsum.photos/200/200" alt="" />
+        <div style="flex-direction: column">
+          <!-- <img src="https://picsum.photos/200/200" alt="" /> -->
           <p>{{ item.name }}</p>
         </div>
         <div>
@@ -56,34 +57,39 @@ export default {
 <style lang="scss" scoped>
 .card {
   text-align: center;
-  border: 1px solid #999;
+  border: 1px solid rgb(226, 226, 226);
   background-color: #fff;
+  min-width: 300px;
 }
-.card-header {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  border-bottom: 1px solid #999;
-  padding: 0.5rem;
+
+.card-header,
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
 }
 .card-header div {
-  margin: 0 1rem;
-}
-.card-body {
-  text-align: center;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  border: 1px solid rgb(226, 226, 226);
+  flex: 1;
+  height: 50px;
+}
+
+.card-body div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(226, 226, 226);
+  flex: 1;
+  height: 100px;
 }
 .quantity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   p {
     margin: 0 1rem;
+    @media screen and (max-width: 576px) {
+      margin: 0.2rem;
+    }
   }
 }
 </style>
