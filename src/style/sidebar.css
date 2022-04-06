@@ -1,6 +1,6 @@
 .siderbar {
-    width: 200px;
-    height: 800px;
+    width: 260px;
+    min-height: 800px;
     position: absolute;
     left: 0;
     top: 500px;

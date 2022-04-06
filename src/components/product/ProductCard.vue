@@ -1,11 +1,11 @@
 <template>
   <div class="card box-border">
-    <div class="img"><img :src="item.src" alt="" /></div>
+    <div class="img"><img :src="img" alt="" /></div>
     <h2>{{ item.name }}</h2>
     <div class="flex">
-      <p>price:{{ item.price }}</p>
+      <p>價格:{{ item.price }}</p>
       <router-link :to="{ name: 'ProductDetial', query: { Id: itemdata.id } }">
-        <button class="color-button">view more</button></router-link
+        <button class="color-button">詳細資訊</button></router-link
       >
     </div>
   </div>
@@ -21,7 +21,12 @@ export default {
     };
   },
   mounted() {
-    console.log(this.item);
+    console.log(this.item.img);
+  },
+  computed: {
+    img() {
+      return `${this.item.img}`;
+    },
   },
 };
 </script>
@@ -33,6 +38,7 @@ h2 {
 .card {
   border-radius: 0.5rem;
   padding: 1rem;
+  width: 100%;
 }
 .img {
   width: 200px;

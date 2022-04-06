@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <router-link to="/" class="back">&lt; Back</router-link>
+    <router-link to="/" class="back">&lt; 回上一頁</router-link>
     <LoginInput />
   </div>
 </template>

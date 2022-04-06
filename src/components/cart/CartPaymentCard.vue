@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="card" v-show="cart_total">
-      <h1>TOLAL:{{ cart_total }}</h1>
-      <button @click="removeAll">Remove All</button>
-      <button>Checkout</button>
+      <h1>總計:{{ cart_total }}</h1>
+      <button @click="removeAll">移除全部</button>
+      <button>結帳</button>
     </div>
-    <div v-show="!cart_total">no product</div>
+    <div v-show="!cart_total" class="text-center">購物車內無商品</div>
   </div>
 </template>
 
@@ -36,5 +36,13 @@ export default {
 }
 .card > * {
   margin: 0 1rem;
+}
+.text-center {
+  text-align: center;
+}
+.card h1 {
+  @media screen and (max-width: 576px) {
+    font-size: 16px;
+  }
 }
 </style>

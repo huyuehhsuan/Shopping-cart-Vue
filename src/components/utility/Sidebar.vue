@@ -3,10 +3,10 @@
     <ul class="menus">
       <li class="menu-list menu-open">
         <router-link to="/" class="menu-header"
-          >水果<span class="arrow">▼</span></router-link
+          >餅乾系列<span class="arrow">▼</span></router-link
         >
         <ul class="menu-list-item">
-          <li v-for="item in fruitList" :key="item.id">
+          <li v-for="item in cookieList" :key="item.id">
             <router-link
               :to="{ name: 'ProductDetial', query: { Id: item.id } }"
               @click.native="reload"
@@ -17,10 +17,10 @@
       </li>
       <li class="menu-list menu-open">
         <router-link to="/" class="menu-header"
-          >動物<span class="arrow">▼</span></router-link
+          >其他點心<span class="arrow">▼</span></router-link
         >
         <ul class="menu-list-item">
-          <li v-for="item in animalList" :key="item.id">
+          <li v-for="item in otherList" :key="item.id">
             <router-link
               :to="{ name: 'ProductDetial', query: { Id: item.id } }"
               @click.native="reload"
@@ -65,11 +65,11 @@ export default {
     });
   },
   computed: {
-    fruitList() {
-      return this.itemList.filter((item) => item.class === "fruit");
+    cookieList() {
+      return this.itemList.filter((item) => item.class === "cookie");
     },
-    animalList() {
-      return this.itemList.filter((item) => item.class === "animal");
+    otherList() {
+      return this.itemList.filter((item) => item.class === "other");
     },
   },
   methods: {

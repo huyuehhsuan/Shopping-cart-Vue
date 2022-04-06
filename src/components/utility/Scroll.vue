@@ -1,14 +1,11 @@
 <template>
   <div>
-    <section style="flex-direction: column">
+    <!-- <section style="flex-direction: column">
       <h1 class="text-jump">ScrollDown &#8595;</h1>
-      <h1 class="text-pop">ScrollDown &#8595;</h1>
-      <h1 class="text-flip">ScrollDown &#8595;</h1>
-      <h1 class="text-blink">ScrollDown &#8595;</h1>
-    </section>
+    </section> -->
     <section>
       <div class="container reveal fade-bottom">
-        <h2>Caption</h2>
+        <h2>起源</h2>
         <div class="text-container">
           <div class="text-box">
             <h3>Section Text</h3>
@@ -37,35 +34,6 @@
 
     <section>
       <div class="container reveal fade-left">
-        <h2>Caption</h2>
-        <div class="text-container">
-          <div class="text-box">
-            <h3>Section Text</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              eius molestiae perferendis eos provident vitae iste.
-            </p>
-          </div>
-          <div class="text-box">
-            <h3>Section Text</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              eius molestiae perferendis eos provident vitae iste.
-            </p>
-          </div>
-          <div class="text-box">
-            <h3>Section Text</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              eius molestiae perferendis eos provident vitae iste.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container reveal fade-right">
         <h2>Caption</h2>
         <div class="text-container">
           <div class="text-box">
@@ -126,11 +94,11 @@ export default {
   },
   methods: {
     reveal() {
-      var reveals = document.querySelectorAll(".reveal");
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
+      let reveals = document.querySelectorAll(".reveal");
+      for (let i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        let elementVisible = 150;
 
         if (elementTop < windowHeight - elementVisible) {
           reveals[i].classList.add("active");
@@ -143,9 +111,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 section {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,17 +122,20 @@ section:nth-child(1) {
 }
 section:nth-child(2) {
   color: #42455a;
-  background: var(--first-color-second);
+  background: rgb(255, 217, 190);
 }
 section:nth-child(3) {
   color: var(--first-color-second);
 }
 section:nth-child(4) {
   color: #42455a;
-  background: var(--first-color-second);
+  background: rgb(255, 217, 190);
 }
 section .container {
   margin: 100px;
+  @media screen and (max-width: 576px) {
+    margin: 0;
+  }
 }
 section h1 {
   font-size: 3rem;

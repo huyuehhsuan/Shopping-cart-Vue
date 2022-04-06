@@ -12,8 +12,4 @@ export default {
 </script>
 <style>
 @import "./style/main.css";
-
-body {
-  height: 200vh;
-}
 </style>

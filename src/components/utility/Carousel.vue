@@ -3,7 +3,7 @@
     <ul class="carousel">
       <li v-for="n in list" :key="n.id" :style="img(n)"></li>
     </ul>
-    <h1 class="type-text">textcodeadd...</h1>
+    <h1 class="type-text">more cookies...</h1>
   </div>
 </template>
 
@@ -22,20 +22,28 @@ export default {
           url: "https://images.unsplash.com/photo-1568827999250-3f6afff96e66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
         },
       ],
+      fullWidth: 0,
     };
   },
   mounted() {
-    window.addEventListener("scroll", function () {
-      let typeText = document.querySelector(".type-text");
-      let scroll = document.querySelector(".carousel");
-      if (window.scrollY > 0) {
-        scroll.classList.add("scroll");
-        typeText.classList.add("typing");
-      } else {
-        scroll.classList.remove("scroll");
-        typeText.classList.remove("typing");
-      }
-    });
+    const vm = this;
+    vm.fullWidth = window.innerWidth;
+    window.onresize = () => {
+      vm.fullWidth = window.innerWidth;
+    };
+    if (vm.fullWidth > 576) {
+      window.addEventListener("scroll", function () {
+        let typeText = document.querySelector(".type-text");
+        let scroll = document.querySelector(".carousel");
+        if (window.scrollY > 0) {
+          scroll.classList.add("scroll");
+          typeText.classList.add("typing");
+        } else {
+          scroll.classList.remove("scroll");
+          typeText.classList.remove("typing");
+        }
+      });
+    }
   },
   methods: {
     img(n) {
@@ -49,7 +57,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrap {
   width: 100%;
   height: 500px;
@@ -97,7 +105,7 @@ export default {
   overflow: hidden;
 }
 .typing {
-  animation: 6s typing steps(15, jump-none) forwards infinite;
+  animation: 6s typing steps(16, jump-none) forwards infinite;
 }
 @keyframes carouselanimate {
   0% {
@@ -123,7 +131,7 @@ export default {
     width: 0ch;
   }
   to {
-    width: 14ch;
+    width: 15ch;
   }
 }
 </style>

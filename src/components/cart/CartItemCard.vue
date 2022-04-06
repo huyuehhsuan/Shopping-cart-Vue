@@ -2,10 +2,10 @@
   <div class="card">
     <div>
       <div class="card-header">
-        <div>proudct</div>
-        <div>price</div>
-        <div>quantity</div>
-        <div>total</div>
+        <div>商品</div>
+        <div>價格</div>
+        <div>數量</div>
+        <div>總計</div>
         <div></div>
       </div>
       <div class="card-body">
@@ -24,7 +24,7 @@
         <div>
           <p>{{ total_cost }}</p>
         </div>
-        <div><button @click="removeOneItem">delete</button></div>
+        <div><button @click="removeOneItem">刪除</button></div>
       </div>
     </div>
   </div>
@@ -74,6 +74,9 @@ export default {
   border: 1px solid rgb(226, 226, 226);
   flex: 1;
   height: 50px;
+  @media screen and (max-width: 576px) {
+    height: unset;
+  }
 }
 
 .card-body div {
@@ -83,6 +86,10 @@ export default {
   border: 1px solid rgb(226, 226, 226);
   flex: 1;
   height: 100px;
+  @media screen and (max-width: 576px) {
+    height: unset;
+    padding: 20px 0;
+  }
 }
 .quantity {
   p {

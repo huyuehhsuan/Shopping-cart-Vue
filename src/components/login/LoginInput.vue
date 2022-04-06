@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Login</h1>
+    <h1>登入</h1>
     <div class="form box-border">
       <input
         type="text"
@@ -16,7 +16,7 @@
         v-model="user.password"
       />
 
-      <button class="color-button" @click="login">Login</button>
+      <button class="color-button" @click="login">登入</button>
     </div>
   </div>
 </template>

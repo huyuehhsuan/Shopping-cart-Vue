@@ -5,13 +5,13 @@
       <label for="nav-check" class="nav-button"> click </label>
     </div>
     <div class="nav-links">
-      <router-link to="/" class="nav-item">Home</router-link>
-      <router-link to="/LogIn" class="nav-item">LogIn</router-link>
+      <router-link to="/" class="nav-item">首頁</router-link>
+      <router-link to="/LogIn" class="nav-item">登入</router-link>
       <router-link to="/" class="nav-item" @click.native="logout">
-        LogOut</router-link
+        登出</router-link
       >
-      <router-link to="/Cart" class="nav-item">Cart</router-link>
-      <a href="#" class="nav-item">Contact</a>
+      <router-link to="/Cart" class="nav-item">購物車</router-link>
+      <a href="/About" class="nav-item">關於我們</a>
     </div>
   </div>
 </template>
