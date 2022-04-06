@@ -29,7 +29,6 @@
 import itemList from "@/data/item.js";
 export default {
   name: "ProductDetial",
-
   data() {
     return {
       itemList: itemList,
@@ -138,23 +137,22 @@ export default {
   text-align: center;
 }
 #snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
-  min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: rgb(164, 164, 164); /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 6px; /* Rounded borders */
-  padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  top: 50%; /* 30px from the bottom */
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: rgb(164, 164, 164);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
 }
 
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
 #snackbar.show {
-  visibility: visible; /* Show the snackbar */
+  visibility: visible;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 @keyframes fadein {
