@@ -20,9 +20,7 @@ export default {
       itemdata: this.item,
     };
   },
-  mounted() {
-    console.log(this.item.img);
-  },
+
   computed: {
     img() {
       return `${this.item.img}`;
